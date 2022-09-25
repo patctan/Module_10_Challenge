@@ -1,3 +1,8 @@
+const inquirer = require("inquirer");
+const { generateHTML, generateCard } = require("./utils/generateHTML");
+const fs = require("fs");
+const { questions, engineerQuestions, internQuestions } = require("./src/data");
+
 // Your application should use Jest for running the unit tests and Inquirer for collecting input from the user.
 //The application will be invoked by using the following command:
 
@@ -7,9 +12,6 @@
 // WHEN I am prompted for my team members and their information
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
 
-// 1. Install package.json through Integrated terminal in root directory(?)
-// 2. Make sure that inquirer and jest are installed as dependencies.
-
 // WHEN I click on an email address in the HTML
 // THEN my default email program opens and populates the TO field of the email with the address
 
@@ -18,92 +20,41 @@
 // 3c. Create a function named generateCard(data) in generateHTML.js to create template for a card, then insert that function into generateHTML().
 // Template for card should look like (subject to change):
 
-// `<div class=card>
-//<h1> ${data.name} </h1>
-// <h2> ${data.job} </h2>
-// <p> ${data.whatever} </p>
-// <button class = btn>
-// <p> email: ${data.email} </p>
-// </div>`
-
 // 3d. Include these classes in the HTML and CSS pages: Employee, Manager, Engineer, and Intern.
 // 3e. Put module.exports = generateHTML; at the bottom of generateHTML.js
 
 // 4a. Insert this function into index.js:
 
-//  function writeToFile(data) {
-//   fs.writeFile("newHTML.html", data, (err) =>
-//   err ? console.error(err) : console.log("Congrats, it worked!")
-// );
-// }
+function writeToFile(data) {
+  fs.writeFile("newHTML.html", data, (err) =>
+    err ? console.error(err) : console.log("Congrats, it worked!")
+  );
+}
 
-// async function init() {
-//     var userInput = await inquirer.prompt(questions);
-//     console.log(promptInput);
-//     var formattedHTML = generateHTML(userInput);
-//     writeToFile(formattedHTML);
-//   }
-
-//   // Function call to initialize app
-//   init();
-
-// 4b. Include these at the top of index.js:
-// const inquirer = require("inquirer");
-// const generateHTML = require("./utils/generateHTML");
-// const fs = require("fs")
-
-// WHEN I start the application
-// THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
-// THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-// WHEN I select the engineer option
-// THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-// WHEN I select the intern option
-// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+async function init() {
+  var resultsArray = [];
+  var userInput = await inquirer.prompt(questions);
+  resultsArray.push(userInput);
+  while (userInput.extraQuestion !== "Finish") {
+    var thisIsAVariable =
+      userInput.extraQuestion === "Engineer"
+        ? engineerQuestions
+        : internQuestions;
+    userInput = await inquirer.prompt(thisIsAVariable);
+    resultsArray.push(userInput);
+  }
+  var formattedHTML = generateHTML(resultsArray);
+  writeToFile(formattedHTML);
+}
 
 // 4c. Include a const questions = [team manager’s name, employee ID, email address, and office number]
-// in index.html, with the questions formatted like:
+// in index.js, with the questions formatted like:
 
-//const questions =
-//inquirer.prompt([
-// {
-// type: "input",
-// message: "What is the your team manager's name?",
-// name: "managerName",
-// },
-
-// {
-// type: "input",
-// message: "Please enter your employee ID.",
-// name: "employeeID",
-// },
-
-// {
-// type: "input",
-// message: "Please enter your email address.",
-// name: "email",
-// },
-
-// {
-// type: "input",
-// message: "What is your office number?",
-// name: "officeNumber",
-// },
-//])
-// ------------------- USE .WHEN HERE------------------
-//.then ((answers => {
-//  inquirer.prompt([
-//    {
-//    type: "list",
-//    message: "Do you want to add an engineer, add an intern, or finish building your team?",
-//    choices: ['Engineer', 'Intern', 'Finish'],
-//    name: "extraQuestion",
-//    },
-//])
-//})
+init();
+// })
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// ----ASK LEARNING ASSISTANT ABOUT THIS----
+
 // WHEN I enter the team manager’s name, employee ID, email address, and office number
 // THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
 // WHEN I select the engineer option
@@ -163,4 +114,4 @@
 
 // getRole() // Overridden to return 'Intern'
 
-// Finally, although it’s not a requirement, you should consider adding validation to ensure that user input provided is in the proper expected format.
+// Finally, although it’s not a requirement, you should consider adding validation to ensure that user input provided is in the proper expected format
