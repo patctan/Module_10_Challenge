@@ -1,4 +1,5 @@
-function generateHTML() {
+function generateHTML(data) {
+  console.log(data);
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -27,7 +28,8 @@ function iterateThroughArray() {
   document.getElementById("placeWhereCardsGo").innerHTML = cardsMadeFromArray;
 }
 
-function generateCard() {
+function generateCard(data) {
+  console.log(data, "generateCard");
   return `
     <div class="card">
     <p>`;
