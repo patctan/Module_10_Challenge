@@ -42,6 +42,7 @@ async function init() {
         : internQuestions;
     userInput = await inquirer.prompt(thisIsAVariable);
     resultsArray.push(userInput);
+    console.log(resultsArray);
   }
   var formattedHTML = generateHTML(resultsArray);
   writeToFile(formattedHTML);
