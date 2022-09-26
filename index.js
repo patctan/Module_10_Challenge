@@ -2,6 +2,10 @@ const inquirer = require("inquirer");
 const { generateHTML, generateCard } = require("./utils/generateHTML");
 const fs = require("fs");
 const { questions, engineerQuestions, internQuestions } = require("./src/data");
+const Employee = require("./utils/lib/employee");
+const Manager = require("./utils/lib/manager");
+const Engineer = require("./utils/lib/engineer");
+const Intern = require("./utils/lib/intern");
 
 // Your application should use Jest for running the unit tests and Inquirer for collecting input from the user.
 //The application will be invoked by using the following command:

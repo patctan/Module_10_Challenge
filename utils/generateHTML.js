@@ -1,5 +1,5 @@
 function generateHTML(data) {
-  console.log(data);
+  console.log(data, "generateHTML");
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
