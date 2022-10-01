@@ -23,8 +23,8 @@ class Employee {
   }
 
   getRole() {
-    console.log(`Employee`);
-    return `Employee`;
+    console.log(Employee);
+    return Employee;
   }
 }
 
