@@ -37,7 +37,7 @@ function generateCard(data) {
 
 module.exports = {
   generateHTML,
-  generateCard,,
+  generateCard,
 };
 
 // Event Listener to link github name to github profile
