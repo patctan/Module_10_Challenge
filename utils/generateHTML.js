@@ -14,13 +14,13 @@ function generateHTML(data) {
   <h1>My Team</h1>
   </div>
 
-  <div class="card">
-  <p id="placeWhereCardsGo">${iterateThroughArray(data)}</p>
+  <div class="flex">
+  ${iterateThroughArray(data)}
   </div>
       
   
   </body>
-  </html>";`;
+  </html>"`;
 }
 
 function iterateThroughArray(data) {
@@ -32,18 +32,15 @@ function generateCard(data) {
   console.log(data, "generateCard");
   return `
     <div class="card">
-    <p> ${data.Name} </p>
-    <p> ${data.employeeID}</p>
-    <p> ${data.email}</p>
-    <p> ${data.special}</p>
-    </div>`;
+    <div class="container">
+    <h2> Name: ${data.Name} </h2>
+    <h3> Employee ID: ${data.employeeID}<h3>
+    <h4> Email: ${data.email}</h4>
+    <h5> ${data.special}</h5>
+    <div>
+    </div>`
 }
 
 module.exports = {
   generateHTML,
-  // generateCard,
-  // iterateThroughArray,
 };
-
-// Event Listener to link github name to github profile
-// AddEventListener.querySelector()

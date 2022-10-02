@@ -3,22 +3,34 @@
 }
 
 h1 {
+  font-size: 70px;
+  text-align: center;
   font-weight: bolder;
-  font-size: large;
+}
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+h3, h4, h5 {
+  font-size: 30px;
+  width: 30%;
+  text-align: center;
+  color:blue;
 }
 
 .flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  left: 30%;
+  padding: 10px;
 }
 
-.card {
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.name {
-  background-color: red;
-  color: white;
-}
+/*.card {
+  display:flex;
+  justify-content: space-around;
+  margin: 10px;
+} */
