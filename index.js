@@ -48,6 +48,8 @@ async function init() {
     resultsArray.push(userInput);
     console.log(resultsArray);
   }
+
+
   var formattedHTML = generateHTML(resultsArray);
   writeToFile(formattedHTML);
 }

@@ -2,7 +2,7 @@ const questions = [
   {
     type: "input",
     message: "What is the your team manager's name?",
-    name: "managerName",
+    name: "Name",
   },
 
   {
@@ -36,7 +36,7 @@ const engineerQuestions = [
   {
     type: "input",
     message: "What is the your engineer's name?",
-    name: "engineerName",
+    name: "Name",
   },
 
   {
@@ -68,7 +68,7 @@ const internQuestions = [
   {
     type: "input",
     message: "What is the your intern's name?",
-    name: "internName",
+    name: "Name",
   },
 
   {

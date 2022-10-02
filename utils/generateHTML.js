@@ -14,7 +14,7 @@ function generateHTML(data) {
   </div>
 
   <div class="card">
-  <p id="placeWhereCardsGo"></p>
+  // <p id="placeWhereCardsGo">${iterateThroughArray(data)}</p>
   </div>
       
   
@@ -22,22 +22,26 @@ function generateHTML(data) {
   </html>";`;
 }
 
-function iterateThroughArray() {
-  let cardsMadeFromArray = "";
-  resultsArray.forEach(generateCard);
-  document.getElementById("placeWhereCardsGo").innerHTML = cardsMadeFromArray;
+function iterateThroughArray(data) {
+  return data.map(generateCard).join();
+  
 }
 
 function generateCard(data) {
   console.log(data, "generateCard");
   return `
     <div class="card">
-    <p>`;
+    <p> ${data.Name} </p>
+    <p> ${data.employeeID}</p>
+    <p> ${data.email}</p>
+    <p> ${data.special}</p>
+    </div>`;
 }
 
 module.exports = {
   generateHTML,
-  generateCard,
+  // generateCard,
+  // iterateThroughArray,
 };
 
 // Event Listener to link github name to github profile
