@@ -6,7 +6,8 @@ function generateHTML(data) {
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+      <link rel="stylesheet" href="./dist/style.css" />
+      <title>My Team</title>
   </head>
   <body>
   <div class="header">
@@ -14,7 +15,7 @@ function generateHTML(data) {
   </div>
 
   <div class="card">
-  // <p id="placeWhereCardsGo">${iterateThroughArray(data)}</p>
+  <p id="placeWhereCardsGo">${iterateThroughArray(data)}</p>
   </div>
       
   

@@ -1,15 +1,24 @@
-.employee {
+.header {
   background-color: blue;
 }
 
-.manager {
-  background-color: green;
+h1 {
+  font-weight: bolder;
+  font-size: large;
 }
 
-.engineer {
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.name {
   background-color: red;
-}
-
-.intern {
-  background-color: yellow;
+  color: white;
 }
